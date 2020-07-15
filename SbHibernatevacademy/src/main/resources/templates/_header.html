@@ -1,0 +1,23 @@
+<div class="header-container"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+ 
+   <div class="site-name">
+ <center> <img src="\resource\img\vacademylogo.jpg" width="200" height="200"></center>
+   <h3>V-ACADEMY</h3>
+   </div>
+   <div class="header-bar">
+      <th:block sec:authorize="isAuthenticated()">
+         Hello
+         <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+         &nbsp;|&nbsp;
+         <a th:href="@{/admin/logout}">Logout</a>
+      </th:block>
+       
+      <th:block sec:authorize="!isAuthenticated()">
+         <a th:href="@{/admin/login}">Login</a>
+      </th:block>
+   </div>
+   
+</div>
+
